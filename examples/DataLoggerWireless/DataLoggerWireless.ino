@@ -27,12 +27,16 @@
   MIT license - Redistribution must include this header.
  ****************************************************/
 
-#include <EdgeStream.h> 
+#include <EdgeStreamWireless.h>
 
-EdgeStream stream;
+EdgeStreamWireless stream;
+
+// ======= CONFIGURE YOUR WIFI HERE =======
+const char* WIFI_SSID     = "YOUR_SSID";
+const char* WIFI_PASSWORD = "YOUR_PASSWORD";
 
 void setup() {
-  stream.begin();
+  stream.begin(WIFI_SSID, WIFI_PASSWORD);
 }
 
 void loop() {
@@ -41,7 +45,7 @@ void loop() {
   vector<double> sensorValues = {1, 2, 3};
 
   // Log the sensor data to the Serial Monitor
-  stream.logData(sensorName, sensorValues);
+  stream.logDataWireless(sensorName, sensorValues);
 
   // Delay of 1 second before the next loop iteration
   delay(1000);

@@ -17,7 +17,7 @@
   MIT License - Redistribution must include this header.
 ****************************************************/
 
-#include <EdgeSense.h>
+#include <EdgeSensor.h>
 
 // I2S microphone pin connections
 int ws_pin = 7;  // L/R clock (word select)
