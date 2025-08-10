@@ -30,32 +30,32 @@
   MIT license - Redistribution must include this header.
  ****************************************************/
 
-#include <EdgeVision.h>
+#include <EdgeSense.h>
 
 // Replace these with your actual WiFi credentials
 const char* ssid = "YOUR_WIFI_SSID";
 const char* password = "YOUR_WIFI_PASSWORD";
 
-// Create an instance of the EdgeVision class
-EdgeVision cam;
+// Create an instance of the EdgeSense class
+EdgeSense edgeSense;
 
 void setup() {
   // Start serial communication
   Serial.begin(115200);
 
   // Initialize WiFi
-  cam.initWiFi(ssid, password);
+  edgeSense.initWiFi(ssid, password);
 
   // Initialize the camera
-  cam.initCamera();
+  edgeSense.initCamera();
 
   // Start the web streaming server
-  cam.startCameraServer();
+  edgeSense.startCameraServer();
 
   Serial.println("Camera server started.");
 }
 
 void loop() {
   // Keep the HTTP server running
-  cam.keepServerAlive();
+  edgeSense.keepServerAlive();
 }

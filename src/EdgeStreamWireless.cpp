@@ -2,7 +2,7 @@
 
 EdgeStreamWireless::EdgeStreamWireless() : server(80) {}
 
-void EdgeStreamWireless::begin(const char* ssid, const char* password) {
+void EdgeStreamWireless::beginWireless(const char* ssid, const char* password) {
     Serial.begin(115200);
     connectWiFi(ssid, password);
 

@@ -12,7 +12,7 @@ using namespace std;
 class EdgeStreamWireless {
 public:
     EdgeStreamWireless();
-    void begin(const char* ssid, const char* password);
+    void beginWireless(const char* ssid, const char* password);
     void logDataWireless(const char* sensorName, const vector<double>& sensorValues);
 
 private:

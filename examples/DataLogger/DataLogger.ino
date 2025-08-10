@@ -27,12 +27,12 @@
   MIT license - Redistribution must include this header.
  ****************************************************/
 
-#include <EdgeStream.h> 
+#include <EdgeSense.h> 
 
-EdgeStream stream;
+EdgeSense edgeSense;
 
 void setup() {
-  stream.begin();
+  edgeSense.begin();
 }
 
 void loop() {
