@@ -27,12 +27,12 @@
   MIT license - Redistribution must include this header.
  ****************************************************/
 
-#include <EdgeSense.h> 
+#include <EdgeStream.h> 
 
-EdgeSense edgeSense;
+EdgeStream edgeStream;
 
 void setup() {
-  edgeSense.begin();
+  edgeStream.begin();
 }
 
 void loop() {
@@ -41,7 +41,7 @@ void loop() {
   vector<double> sensorValues = {1, 2, 3};
 
   // Log the sensor data to the Serial Monitor
-  stream.logData(sensorName, sensorValues);
+  edgeStream.logData(sensorName, sensorValues);
 
   // Delay of 1 second before the next loop iteration
   delay(1000);

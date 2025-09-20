@@ -1,13 +1,13 @@
-#ifndef EDGESENSOR_H
-#define EDGESENSOR_H
+#ifndef EDGAUDIO_H
+#define EDGAUDIO_H
 
 #include <Arduino.h>
 #include <driver/i2s.h>
 
-class EdgeSensor {
+class EdgeAudio {
     public:
-        EdgeSensor(i2s_port_t i2s_port);  // Constructor
-        ~EdgeSensor();  // Destructor for memory cleanup
+        EdgeAudio(i2s_port_t i2s_port);  // Constructor
+        ~EdgeAudio();  // Destructor for memory cleanup
 
         void setPins(int sck_pin, int ws_pin, int sd_pin);
         void beginMic(int buff_len=64);
@@ -19,4 +19,4 @@ class EdgeSensor {
         int16_t* sBuffer;  // Dynamic buffer
 };
 
-#endif  // EDGESENSOR_H
+#endif  // EDGAUDIO_H

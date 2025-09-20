@@ -17,7 +17,7 @@
   MIT License - Redistribution must include this header.
 ****************************************************/
 
-#include <EdgeSense.h>
+#include <EdgeAudio.h>
 
 // I2S microphone pin connections
 int ws_pin = 7;  // L/R clock (word select)
@@ -26,7 +26,7 @@ int sck_pin = 6; // Bit clock
 #define I2S_PORT I2S_NUM_0
 
 // Initialize I2S microphone
-EdgeSense i2s_mic(I2S_PORT);
+EdgeAudio i2s_mic(I2S_PORT);
 
 void setup() {
     Serial.begin(115200);

@@ -1,17 +1,17 @@
-#include "EdgeSensor.h"
+#include "EdgeAudio.h"
 
-EdgeSensor::EdgeSensor(i2s_port_t i2s_port) {
+EdgeAudio::EdgeAudio(i2s_port_t i2s_port) {
     this->i2s_port = i2s_port;  
     this->sBuffer = nullptr;  // Initialize to null before allocation
 }
 
-EdgeSensor::~EdgeSensor() {
+EdgeAudio::~EdgeAudio() {
     if (this->sBuffer) {
         delete[] this->sBuffer;
     }
 }
 
-void EdgeSensor::setPins(int sck_pin, int ws_pin, int sd_pin) {
+void EdgeAudio::setPins(int sck_pin, int ws_pin, int sd_pin) {
     const i2s_pin_config_t pin_config = {
         .bck_io_num = sck_pin,
         .ws_io_num = ws_pin,
@@ -22,7 +22,7 @@ void EdgeSensor::setPins(int sck_pin, int ws_pin, int sd_pin) {
     i2s_set_pin(this->i2s_port, &pin_config);
 }
 
-void EdgeSensor::beginMic(int buff_len) {
+void EdgeAudio::beginMic(int buff_len) {
     this->bufferLen = buff_len;
     this->sBuffer = new int16_t[buff_len];  // Allocate buffer dynamically
 
@@ -43,7 +43,7 @@ void EdgeSensor::beginMic(int buff_len) {
     i2s_driver_install(this->i2s_port, &i2s_config, 0, NULL);
 }
 
-float EdgeSensor::readMeanAudio() {
+float EdgeAudio::readMeanAudio() {
     if (!this->sBuffer) {
         return 0.0f;  // Safety check in case buffer is not initialized
     }
