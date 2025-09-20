@@ -7,9 +7,9 @@
   over local Wi-Fi.
 
   Features:
-  - Compatible with ESP32-CAM and Consentium EdgeVision board
+  - Compatible with AI Tinkerer ESP32-CAM and Consentium IoT's EdgeVision board
   - Easy Wi-Fi setup for live LAN streaming
-  - MJPEG video stream over HTTP (port 81)
+  - MJPEG video stream over HTTP (port 5000)
   - Modular EdgeVision SDK for simplified deployment
   - Useful for real-time visual inference, monitoring, or surveillance
 
@@ -17,7 +17,7 @@
   - Initializes Wi-Fi connection with given SSID and password
   - Configures and activates onboard camera
   - Starts HTTP stream server on local IP address (shown in Serial Monitor)
-  - Stream accessible at: http://<device_ip>:81/stream
+  - Stream accessible at: http://<device_ip>:5000/stream
 
   Tutorials and Documentation:
   Visit us at:
