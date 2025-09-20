@@ -32,7 +32,8 @@
 EdgeStream edgeStream;
 
 void setup() {
-  edgeStream.begin();
+  // Initialize Serial communication at 115200 baud rate
+  Serial.begin(115200);
 }
 
 void loop() {

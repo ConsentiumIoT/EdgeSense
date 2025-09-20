@@ -31,11 +31,14 @@
 
 EdgeStreamWireless streamWireless;
 
-const char* WIFI_SSID     = "YOUR_SSID";
-const char* WIFI_PASSWORD = "YOUR_PASSWORD";
+const char* ssid = "YOUR_SSID";
+const char* password = "YOUR_PASSWORD";
 
 void setup() {
-  streamWireless.beginWireless(WIFI_SSID, WIFI_PASSWORD);
+  // Start Serial communication for debugging
+  Serial.begin(115200);
+  // Initialize wireless data logging
+  streamWireless.beginWireless(ssid, password);
 }
 
 void loop() {

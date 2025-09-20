@@ -3,7 +3,6 @@
 EdgeStreamWireless::EdgeStreamWireless() : server(80) {}
 
 void EdgeStreamWireless::beginWireless(const char* ssid, const char* password) {
-    Serial.begin(115200);
     connectWiFi(ssid, password);
 
     // Define GET route
@@ -12,16 +11,28 @@ void EdgeStreamWireless::beginWireless(const char* ssid, const char* password) {
     server.begin();
     Serial.println("HTTP server started");
 
-    // Start background task to handle HTTP requests
-    xTaskCreatePinnedToCore(
-        serverTask,    // Task function
-        "HTTPServer",  // Task name
-        4096,          // Stack size
-        this,          // Parameter
-        1,             // Priority
-        nullptr,       // Task handle
-        1              // Core (1 = App core, 0 = Pro core)
-    );
+#if defined(ESP32)
+    #if CONFIG_IDF_TARGET_ESP32 // Dual-core ESP32
+        xTaskCreatePinnedToCore(
+            serverTask,      // Task function
+            "ServerTask",    // Name
+            4096,            // Stack size
+            this,            // Parameter
+            1,               // Priority
+            NULL,            // Task handle
+            1                // Core ID (1 or 0)
+        );
+    #else // ESP32-C3, ESP32-S2, ESP32-S3 (single-core)
+        xTaskCreate(
+            serverTask,      // Task function
+            "ServerTask",    // Name
+            4096,            // Stack size
+            this,            // Parameter
+            1,               // Priority
+            NULL             // Task handle
+        );
+    #endif
+#endif
 }
 
 void EdgeStreamWireless::connectWiFi(const char* ssid, const char* password) {
